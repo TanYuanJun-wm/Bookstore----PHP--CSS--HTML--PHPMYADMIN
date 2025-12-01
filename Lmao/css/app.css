@@ -1,0 +1,559 @@
+/* ================================================== */
+/* Base Styles & Reset */
+/* ================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
+    background-color: #f8f5f0; /* Parchment-like background */
+    color: #3a3226; /* Rich brown text */
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ================================================== */
+/* Color Theme */
+/* ================================================== */
+:root {
+    --primary: #5c4d3c;    /* Dark wood brown */
+    --secondary: #a68a64;  /* Warm tan */
+    --accent: #8c2e0b;     /* Rust red */
+    --light: #f8f5f0;      /* Parchment */
+    --dark: #2a241b;       /* Almost black brown */
+    --highlight: #d4b483;  /* Gold accent */
+}
+
+/* ================================================== */
+/* Typography */
+/* ================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+}
+
+p, a, li, button, input, textarea, select {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ================================================== */
+/* Navigation */
+/* ================================================== */
+.nav {
+    background-color: var(--primary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.5rem 0;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    list-style: none;
+}
+
+.nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+    color: var(--highlight);
+    border-bottom-color: var(--highlight);
+}
+
+/* ================================================== */
+/* Profile Dropdown Styles */
+/* ================================================== */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-button {
+    background-color: transparent;
+    color: var(--light);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-button:hover {
+    color: var(--highlight);
+}
+
+.profile-button::after {
+    content: "▼";
+    font-size: 0.6rem;
+    margin-left: 0.5rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    list-style: none;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.profile-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f9f5eb;
+    color: var(--accent);
+    padding-left: 1.75rem;
+}
+
+/* ================================================== */
+/* Main Content */
+/* ================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+}
+
+.hero {
+    background: linear-gradient(rgba(92, 77, 60, 0.8), rgba(92, 77, 60, 0.8)), 
+                url('../images/bookstore.jpg') center/cover no-repeat;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--highlight);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#text {
+    text-align: center;
+}
+
+/* ================================================== */
+/* Forms & Buttons */
+/* ================================================== */
+.form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+button:hover {
+    background-color: #6d3819;
+    transform: translateY(-1px);
+}
+
+button[type="reset"] {
+    background-color: #ddd;
+    color: var(--dark);
+}
+
+button[type="reset"]:hover {
+    background-color: #ccc;
+}
+
+/* ================================================== */
+/* Photo Upload Section */
+/* ================================================== */
+.photo-upload-container {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.photo-upload {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.photo-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.photo-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.photo-upload:hover .photo-preview {
+    border-color: var(--accent);
+    transform: scale(1.03);
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* ================================================== */
+/* Tables */
+/* ================================================== */
+.table {
+    /* border-collapse: collapse; */
+    border-radius: 5px;
+    width: 100%;
+    margin: 1rem 0;
+    background: rgb(146, 119, 88);
+}
+
+.table th {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.table th a {
+    color: white; /* Make link text inside <th> white */
+    text-decoration: none; /* Optional: remove underline */
+}
+
+.table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+.table tr:hover td {
+    background-color: #e0d4b9;
+}
+
+.table td .popup {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid var(--secondary);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: none;
+    background: white;
+    padding: 5px;
+}
+
+.table tr:hover .popup {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Position the photo to the right of the cell */
+.table td:last-child {
+    position: relative;
+}
+
+.table td:last-child .popup {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+}
+
+.table th a.asc::after {
+    content: '▴';
+}
+
+.table th a.desc::after {
+    content: '▾';
+}
+
+/* Small animation for smooth appearance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50%) scale(0.95); }
+    to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* ================================================== */
+/* Book Catalogue */
+/* ================================================== */
+.catalogue {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.catalogue-item {
+    background-color: white;
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.catalogue-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+}
+
+.catalogue-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--highlight));
+    opacity: 0.8;
+}
+
+.book-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background-color: #f9f5eb;
+    padding: 0.5rem;
+    border: 1px solid #eee;
+}
+
+.catalogue-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    margin: 0.75rem 0;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.catalogue-item p {
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.catalogue-item .price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.catalogue-item .author {
+    font-style: italic;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+/* ================================================== */
+/* Footer */
+/* ================================================== */
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ================================================== */
+/* Animations & Utilities */
+/* ================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#info {
+    animation: fadeIn 0.5s ease-out forwards;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 80%; 
+    background-color: var(--accent);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+
+/* ================================================== */
+/* Enhanced Pagination */
+/* ================================================== */
+nav.pager {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    gap: 0.5rem;
+}
+
+nav.pager a, 
+nav.pager span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--primary);
+    transition: all 0.3s ease;
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+nav.pager a:hover {
+    background-color: var(--secondary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+nav.pager span {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+nav.pager a.active {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    font-weight: bold;
+}
+
+nav.pager a[rel="prev"],
+nav.pager a[rel="next"] {
+    background-color: var(--highlight);
+    color: var(--dark);
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav.pager {
+        flex-wrap: wrap;
+    }
+    
+    nav.pager a, 
+    nav.pager span {
+        padding: 0.5rem;
+        min-width: 2rem;
+    }
+}
